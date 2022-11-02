@@ -9,7 +9,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
 
 public class bbcNewPageStepDefs {
 
@@ -22,43 +27,50 @@ public class bbcNewPageStepDefs {
 
     }
 
-    @When("on the news home page check sign in icon and check sub sections of Home text England N.Ireland and Scotland")
-    public void on_the_news_home_page_check_sign_in_icon_and_check_sub_sections_of_home_text_england_n_ireland_and_scotland() {
+    @When("on the news home page check sign in icon")
+    public void on_the_news_home_page_check_sign_in_icon() {
         Assert.assertTrue(bbcNewHome.signInButton.isDisplayed());
-        Assert.assertEquals("England", bbcNewHome.textEngland.getText());
-        Assert.assertEquals("N. Ireland", bbcNewHome.textNIreland.getText());
-        Assert.assertEquals("Scotland", bbcNewHome.textScotland.getText());
+
     }
-    @And("Click on the Sign In icon and assert the following on the page Email or Username Password Sign in Need help signing in?")
-    public void click_on_the_sign_in_icon_and_assert_the_following_on_the_page_email_or_username_password_sign_in_need_help_signing_in() {
+
+    @When("check sub sections of Home {string}")
+    public void check_sub_sections_of_home(String subSection) {
+
+        bbcNewHome.subSectionTextControl(subSection);
+
+    }
+
+
+    @Given("Click on the Sign In icon and assert the following on the page check webElements")
+    public void click_on_the_sign_in_icon_and_assert_the_following_on_the_page_check_web_elements() {
+
         bbcNewHome.signInButton.click();
 
-        Assert.assertEquals("Email or username",signInPage.emailOrUsername.getText());
-        Assert.assertEquals("Password",signInPage.password.getText());
-        Assert.assertEquals("Sign in",signInPage.signIn.getText());
-        Assert.assertEquals("Need help signing in?",signInPage.needHelpSignIn.getText());
 
+        Assert.assertEquals("Email or username", signInPage.emailOrUsername.getText());
+        Assert.assertEquals("Password", signInPage.password.getText());
+        Assert.assertEquals("Sign in", signInPage.signIn.getText());
+        Assert.assertEquals("Need help signing in?", signInPage.needHelpSignIn.getText());
 
 
     }
+
     @And("Enter a password of {string} in the password field and click Sign In")
     public void enter_a_password_of_in_the_password_field_and_click_sign_in(String password) {
         signInPage.passwordInput.sendKeys(password);
         signInPage.signIn.click();
 
     }
-    @Then("get respond this message {string} and {string}")
-    public void get_respond_this_message_and(String msg1, String msg2) {
+
+    @Then("get respond this message {string} or {string}")
+    public void get_respond_this_message_or(String msg1, String msg2) {
         String actualText = signInPage.messageAfterSignInClick.getText();
         System.out.println("actualText = " + actualText);
 
-        Assert.assertEquals(msg1,actualText);
-        Assert.assertEquals(msg2,actualText);
-
+        Assert.assertEquals(msg1, actualText);
+        Assert.assertEquals(msg2, actualText);
 
     }
-
-
 
 
 }
