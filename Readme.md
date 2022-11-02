@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 Click on https://www.bbc.co.uk/news
 
 On the Home Page add assertion for the following:
