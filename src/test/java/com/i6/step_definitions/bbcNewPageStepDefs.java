@@ -67,6 +67,7 @@ public class bbcNewPageStepDefs {
         String actualText = signInPage.messageAfterSignInClick.getText();
         System.out.println("actualText = " + actualText);
 
+
         Assert.assertEquals(msg1, actualText);
         Assert.assertEquals(msg2, actualText);
 
