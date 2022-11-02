@@ -4,16 +4,11 @@ import com.i6.pages.bbcNewsHomePage;
 import com.i6.pages.signInPage;
 import com.i6.utilities.ConfigurationReader;
 import com.i6.utilities.Driver;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 
 
 public class bbcNewPageStepDefs {
@@ -41,7 +36,7 @@ public class bbcNewPageStepDefs {
     }
 
 
-    @Given("Click on the Sign In icon and assert the following on the page check webElements")
+    @When("Click on the Sign In icon and assert the following on the page check webElements")
     public void click_on_the_sign_in_icon_and_assert_the_following_on_the_page_check_web_elements() {
 
         bbcNewHome.signInButton.click();
@@ -55,23 +50,23 @@ public class bbcNewPageStepDefs {
 
     }
 
-    @And("Enter a password of {string} in the password field and click Sign In")
+    @When("Enter a password of {string} in the password field and click Sign In")
     public void enter_a_password_of_in_the_password_field_and_click_sign_in(String password) {
         signInPage.passwordInput.sendKeys(password);
         signInPage.signIn.click();
 
     }
 
-    @Then("get respond this message {string} or {string}")
-    public void get_respond_this_message_or(String msg1, String msg2) {
+    @Then("get respond this message {string}")
+    public void get_respond_this_message(String message) {
         String actualText = signInPage.messageAfterSignInClick.getText();
         System.out.println("actualText = " + actualText);
 
+        Assert.assertEquals(message, actualText);
 
-        Assert.assertEquals(msg1, actualText);
-        Assert.assertEquals(msg2, actualText);
+   }
 
-    }
+
 
 
 }

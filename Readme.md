@@ -1,3 +1,13 @@
+Step by step Run our Test
+
+Open your IntelliJ IDEA and click New than Project from Version Control
+![](../1.png)
+
+Than please https://github.com/ozerknet/i6TechnicalExercise.git this link and 
+1- Paste it inside URL 
+2- Choose your Directory for project cloned
+3- Click Clone 
+![](../2.png)
 
 
 
@@ -5,16 +15,7 @@
 
 
 
-Click on https://www.bbc.co.uk/news
 
-On the Home Page add assertion for the following:
-    Sign In Icon at the top of the screen
-    England, N.Ireland and Scotland (sub sections of Home)
-Click on the Sign In icon and assert the following on the page:
-    Email or Username
-    Password
-    Sign in
-    Need help signing in? (Enter a password of @@££@@££ in the password field and click Sign In)
-Add assertions for the following:
-    Something’s missing. Please check and try again.
-    Sorry, that password is too short. It needs to be eight characters or more.
+
+
+
